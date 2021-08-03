@@ -1,0 +1,17 @@
+4 3 5
+
+1....
+oooo.
+.....
+
+ooooo
+...oo
+.oooo
+
+oooo.
+oo...
+ooooo
+
+.....
+.oooo
+2oooo
