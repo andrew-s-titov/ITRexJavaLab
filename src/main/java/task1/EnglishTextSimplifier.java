@@ -1,6 +1,6 @@
 package task1;
 
-public class SimplifyingEnglishText {
+public class EnglishTextSimplifier {
 
     /**
      * Executes all simplifying methods of this class: simplifies the letter "c", removes double letters, removes "e" in

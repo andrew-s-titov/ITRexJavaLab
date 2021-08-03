@@ -1,14 +1,17 @@
 package task1;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
-public class SimplifyingEnglishTextTest {
+public class EnglishTextSimplifierTest {
 
-    private SimplifyingEnglishText s;
+    private EnglishTextSimplifier s;
 
     @BeforeEach
     public void before() {
-        s = new SimplifyingEnglishText();
+        s = new EnglishTextSimplifier();
     }
 
     @Test

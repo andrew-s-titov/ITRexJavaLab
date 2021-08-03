@@ -28,6 +28,10 @@ public class Cell {
         return column;
     }
 
+    /**
+     * Gets distance from a Cell where the prince is detected to this Cell
+     * @return distance
+     */
     public int getDistance() {
         return distance;
     }

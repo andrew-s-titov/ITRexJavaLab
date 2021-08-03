@@ -1,13 +1,17 @@
 package task2;
 
-import java.io.*;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class PathTimeFinder {
-    private final String fileName;
+    final private Cell[][][] field;
+    final private Cell prince;
+    final private Cell princess;
 
-    public PathTimeFinder(String fileName) {
-        this.fileName = fileName;
+    public PathTimeFinder(Cell[][][] field, Cell prince, Cell princess) {
+        this.field = field;
+        this.prince = prince;
+        this.princess = princess;
     }
 
     /**
@@ -17,46 +21,25 @@ public class PathTimeFinder {
      * @return shortest amount of time for the prince to reach the princess
      */
     public int getTime(int sec) {
-        return getShortestPath() * sec;
-    }
-
-    /**
-     * Takes a file with a labyrinth parameters and finds a shortest path form a block where the prince is detected to
-     * a block where the princess is detected.
-     *
-     * @return shortest amount of time for the prince to reach the princess.
-     */
-    private int getShortestPath() {
-        try (FileParser parser = new FileParser(fileName)) {
-            Cell[][][] field = parser.getField();
-            Cell prince = parser.getPrince();
-            Cell princess = parser.getPrincess();
-            return findShortestPath(field, prince, princess);
-        } catch (IOException e) {
-            System.out.println("Something's wrong with the file. Please, start again or try to load another file.");
-        }
-        throw new IllegalArgumentException("The prince can't find the princess!");
+        return findShortestPath() * sec;
     }
 
     /**
      * Starts a wave algorithm from a block where the prince is detected to find the shortest path to a block where
      * the princess is detected.
      *
-     * @param field    the labyrinth field
-     * @param prince   a block where the prince is detected
-     * @param princess a block where the princess is detected
      * @return shortest amount of steps for the prince to reach the princess
      */
-    private int findShortestPath(Cell[][][] field, Cell prince, Cell princess) {
+    private int findShortestPath() {
         Queue<Cell> cellsQueue = new LinkedList<>();
         cellsQueue.add(prince);
 
         while (!cellsQueue.isEmpty()) {
-            Cell topCellInTheQueue = cellsQueue.remove();
-            if (topCellInTheQueue == princess) {
+            Cell topCellInQueue = cellsQueue.remove();
+            if (topCellInQueue == princess) {
                 return princess.getDistance();
             }
-            Steps.waveSteps(field, topCellInTheQueue, cellsQueue);
+            AdjacentChecker.putAllAdjacentToQueue(field, topCellInQueue, cellsQueue);
         }
         throw new IllegalArgumentException("The prince can't find the princess!");
     }
