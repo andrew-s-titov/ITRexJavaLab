@@ -24,11 +24,11 @@ public class SimplifyingEnglishTextTest {
     @Test
     @DisplayName("* * * Testing removeCLetter method * * *")
     public void shouldRemoveC() {
-        Assertions.assertEquals("suksess", s.removeCLetter("success"));
+        Assertions.assertEquals("suksess", s.removeC("success"));
 
-        Assertions.assertEquals("luk", s.removeCLetter("luck"));
-        Assertions.assertEquals("sentral", s.removeCLetter("central"));
-        Assertions.assertEquals("sinnamon", s.removeCLetter("cinnamon"));
+        Assertions.assertEquals("luk", s.removeC("luck"));
+        Assertions.assertEquals("sentral", s.removeC("central"));
+        Assertions.assertEquals("sinnamon", s.removeC("cinnamon"));
     }
 
     @Test

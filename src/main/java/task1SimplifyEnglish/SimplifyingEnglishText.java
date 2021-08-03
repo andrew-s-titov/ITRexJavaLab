@@ -10,7 +10,7 @@ public class SimplifyingEnglishText {
      * @return simplified text
      */
     public String simplify(String text) {
-        return removeLastE(removeDoubleChar(removeCLetter(removeArticle(text))));
+        return removeLastE(removeDoubleChar(removeC(removeArticle(text))));
     }
 
     /**
@@ -20,23 +20,12 @@ public class SimplifyingEnglishText {
      * @param text given text to simplify
      * @return text with simplified "c" letter
      */
-    public String removeCLetter(String text) {
-        char[] textChars = text.toCharArray();
-        StringBuilder str = new StringBuilder();
-        for (int i = 0; i < textChars.length; i++) {
-            if (textChars[i] == 'c') {
-                if (i == textChars.length - 1) {
-                    str.append("k");
-                } else if (textChars[i + 1] == 'e' || textChars[i + 1] == 'i') {
-                    str.append("s");
-                } else if (textChars[i + 1] != 'k') {
-                    str.append("k");
-                }
-            } else {
-                str.append(textChars[i]);
-            }
-        }
-        return str.toString();
+    public String removeC(String text) {
+        text = text.replaceAll("ce", "se");
+        text = text.replaceAll("ci", "si");
+        text = text.replaceAll("ck", "k");
+        text = text.replaceAll("c", "k");
+        return text;
     }
 
     /**
@@ -55,6 +44,7 @@ public class SimplifyingEnglishText {
     /**
      * Removes "e" letter at the end of each word in given text, if the word length > 1.
      * Case insensitive.
+     *
      * @param text given text to simplify
      * @return text without "e" at the end of each word
      */
@@ -63,9 +53,10 @@ public class SimplifyingEnglishText {
     }
 
     /**
-     * Removes articles (a, an, the) from given text (String), strictly taking into account the beginning and the end of
+     * Removes articles (a, an, the) from given text (String) in English, strictly taking into account the beginning and the end of
      * the word. So, after executing the method on "the theory" the result is "theory".
      * Case insensitive.
+     *
      * @param text a text, where search is executed
      * @return text without the given word
      */
