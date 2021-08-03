@@ -47,7 +47,7 @@ public class Steps {
     }
 
     private static void waveIncrement (Cell affected, Cell startWave, Queue<Cell> q) {
-        if (!affected.isWall() && !affected.isWalked() || (affected.isWalked() && affected.getDistance() > startWave.getDistance())) {
+        if (!affected.isWall() && !affected.isWalked()) {
             affected.setDistance(startWave.getDistance() + 1);
             affected.setWalked(true);
             q.add(affected);
