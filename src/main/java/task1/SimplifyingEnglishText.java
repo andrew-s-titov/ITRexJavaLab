@@ -1,4 +1,4 @@
-package task1SimplifyEnglish;
+package task1;
 
 public class SimplifyingEnglishText {
 
@@ -10,7 +10,11 @@ public class SimplifyingEnglishText {
      * @return simplified text
      */
     public String simplify(String text) {
-        return removeLastE(removeDoubleChar(removeC(removeArticle(text))));
+        text = removeArticle(text);
+        text = removeC(text);
+        text = removeDoubleChar(text);
+        text = removeLastE(text);
+        return text;
     }
 
     /**

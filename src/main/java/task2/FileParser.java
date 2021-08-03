@@ -1,18 +1,15 @@
-package task2PrinceGame;
+package task2;
 
-import java.io.BufferedReader;
-import java.io.Closeable;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileParser implements Closeable {
-    BufferedReader reader;
+    final private BufferedReader reader;
     private Cell[][][] field;
     private Cell prince = null;
     private Cell princess = null;
 
-    public FileParser (String fileName) throws IOException {
-        reader = new BufferedReader(new FileReader (fileName));
+    public FileParser(String fileName) throws IOException {
+        reader = new BufferedReader(new FileReader(fileName));
         parseFile();
     }
 
@@ -41,10 +38,11 @@ public class FileParser implements Closeable {
     }
 
     /**
-     * Parses the given file, create field with block and get prince and princess locations.
-     * @throws IOException
+     * Parses the given file, creates a field with blocks and gets prince and princess locations.
+     *
+     * @throws IOException if I/O error occurred
      */
-    private void parseFile() throws IOException{
+    private void parseFile() throws IOException {
         String params = reader.readLine();
 
         if (params.length() < 5) {

@@ -1,5 +1,6 @@
+package task1;
+
 import org.junit.jupiter.api.*;
-import task1SimplifyEnglish.SimplifyingEnglishText;
 
 public class SimplifyingEnglishTextTest {
 
@@ -11,7 +12,7 @@ public class SimplifyingEnglishTextTest {
     }
 
     @Test
-    @DisplayName("* * * Testing simplify method * * *")
+    @DisplayName("* * * Testing .simplify() method * * *")
     public void shouldSimplify() {
         Assertions.assertEquals("kakao and kofi", s.simplify("cacao and coffee"));
         Assertions.assertEquals("sukses", s.simplify("success"));
@@ -22,7 +23,7 @@ public class SimplifyingEnglishTextTest {
     }
 
     @Test
-    @DisplayName("* * * Testing removeCLetter method * * *")
+    @DisplayName("* * * Testing .removeCLetter() method * * *")
     public void shouldRemoveC() {
         Assertions.assertEquals("suksess", s.removeC("success"));
 
@@ -32,18 +33,18 @@ public class SimplifyingEnglishTextTest {
     }
 
     @Test
-    @DisplayName("* * * Testing removeDoubleChar method * * *")
+    @DisplayName("* * * Testing .removeDoubleChar() method * * *")
     public void shouldRemoveDoubleChar() {
         Assertions.assertEquals("uo", s.removeDoubleChar("ooo"));
         Assertions.assertEquals("u", s.removeDoubleChar("oou"));
         Assertions.assertEquals("i", s.removeDoubleChar("iee"));
 
         Assertions.assertEquals("ups i spiled cofi on her dres", s.removeDoubleChar(
-                        "Oops i spilled coffee on her dress"));
+                "Oops i spilled coffee on her dress"));
     }
 
     @Test
-    @DisplayName("* * * Testing removeLastE method * * *")
+    @DisplayName("* * * Testing .removeLastE() method * * *")
     public void shouldRemoveLastE() {
         Assertions.assertEquals("Th", s.removeLastE("The"));
 
@@ -53,7 +54,7 @@ public class SimplifyingEnglishTextTest {
     }
 
     @Test
-    @DisplayName("* * * Testing removeArticle method * * *")
+    @DisplayName("* * * Testing .removeArticle() method * * *")
     public void shouldRemoveArticle() {
         Assertions.assertEquals("table", s.removeArticle("the table"));
 

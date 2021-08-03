@@ -1,7 +1,6 @@
-package task2PrinceGame;
+package task2;
 
 public class Cell {
-    // distance from starting block
     private int distance;
     private boolean walked;
     final private boolean isWall;
@@ -9,7 +8,7 @@ public class Cell {
     final private int line;
     final private int column;
 
-    public Cell (boolean isWall, int level, int line, int column) {
+    public Cell(boolean isWall, int level, int line, int column) {
         this.isWall = isWall;
         this.level = level;
         this.line = line;
